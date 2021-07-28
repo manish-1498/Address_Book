@@ -1,18 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBook
 {
     class Program
     {
-        /// <summary>
-        /// Displaying firstname,Lastname,Address,State,City,Pincode,Phonenumber,MailId
-        /// </summary>
-        /// <param name="args"></param>
+       public static List<AddressBookMain> list = new List<AddressBookMain>();
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book");
-            AddressDetails addressdetails = new AddressDetails("Manish","Pradhan","BNDM","Odisha","Rourkela",770032,7978353896, "manishyoyomp@gmail.com");
-            addressdetails.Contact();
+            Program program = new Program();
+            program.AddDetails();
+            foreach(var person in list)
+            {
+                program.Contactdisplay(person);
+            }
+        }
+        public void AddDetails()
+        {
+            AddressBookMain addressbook = new AddressBookMain();
+            Console.WriteLine("enter Firstname,LastName,Adress,State,City,Zip,Phonenumber,Mail");
+            addressbook.Firstname = Console.ReadLine();
+            addressbook.Lastname = Console.ReadLine();
+            addressbook.Address = Console.ReadLine();
+            addressbook.State = Console.ReadLine();
+            addressbook.City = Console.ReadLine();
+            addressbook.Zip = Console.ReadLine();
+            addressbook.Phonenumber = Console.ReadLine();
+            addressbook.Mail = Console.ReadLine();
+            list.Add(addressbook);
+        }
+        public void Contactdisplay(AddressBookMain person)
+        {
+            Console.WriteLine("FirstName : " + person.Firstname + "\n" + "LastName : " + person.Lastname + "\n" + "Address : " + person.Address + "\n"
+                           + "State : " + person.State + "\n" + "City : " + person.City + "\n" + "Zip : " + person.Zip + "\n"
+                           + "PhoneNumber : " + person.Phonenumber + "\n" + "Mail Id : " + person.Mail);
         }
     }
 }
