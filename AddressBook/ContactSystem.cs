@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace AddressBook
 {
-    class Program
+    class ContactSystem
     {
-        const int add = 1;
-        const int edit = 2;
+        public static List<AddressBookMain> list = new List<AddressBookMain>();
         const int firstname = 1;
         const int lastname = 2;
         const int address = 3;
@@ -14,49 +14,7 @@ namespace AddressBook
         const int city = 5;
         const int zip = 6;
         const int phonenumber = 7;
-        const int  mail= 8;
-        const int display = 3;
-        const int Exit = 0;
-        public static List<AddressBookMain> list = new List<AddressBookMain>();
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to Address Book");
-            Program program = new Program();
-            while (true)
-            {
-                AddressBookMain addressBook = new AddressBookMain();
-                Console.WriteLine("enter the option for the proper action\n" +
-                    "0.for exiting from address book\n" +
-                "1.For adding a contact\n" +
-                "2.For editing a contact\n" +
-                "3.display");
-                int choose = Convert.ToInt32(Console.ReadLine());
-                if (choose == Exit)
-                {
-                    break;
-                }
-                switch (choose)
-                {
-                    case add:
-                        program.AddDetails();
-                        break;
-                    case edit:
-                        program.EditContact();
-                        break;
-                    case display:
-                        foreach (var person in list)
-                        {
-                            program.Contactdisplay(person);
-                        }
-                        Console.WriteLine(".....................................................");
-                        break;
-                    default:
-                        Console.WriteLine("wrong input......enter another input");
-                        break;
-                }
-
-            }
-        }
+        const int mail = 8;
         public void AddDetails()
         {
             AddressBookMain addressbook = new AddressBookMain();
@@ -69,7 +27,7 @@ namespace AddressBook
             addressbook.Zip = Console.ReadLine();
             addressbook.Phonenumber = Console.ReadLine();
             addressbook.Mail = Console.ReadLine();
-            list.Add(addressbook);
+            
 
         }
         public void Contactdisplay(AddressBookMain person)
@@ -132,13 +90,13 @@ namespace AddressBook
                             item.Mail = Console.ReadLine();
                             break;
                     }
-                    
+
                 }
                 else
                 {
                     Console.WriteLine("Wrong input");
                 }
-                
+
             }
             Console.WriteLine("Wants to edit any other details then press y or else n");
             char ch = Convert.ToChar(Console.ReadLine());
