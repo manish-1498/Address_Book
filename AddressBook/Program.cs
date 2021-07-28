@@ -17,6 +17,7 @@ namespace AddressBook
         const int  mail= 8;
         const int display = 3;
         const int Exit = 0;
+        const int delete = 4;
         public static List<AddressBookMain> list = new List<AddressBookMain>();
         static void Main(string[] args)
         {
@@ -27,9 +28,10 @@ namespace AddressBook
                 AddressBookMain addressBook = new AddressBookMain();
                 Console.WriteLine("enter the option for the proper action\n" +
                     "0.for exiting from address book\n" +
-                "1.For adding a contact\n" +
-                "2.For editing a contact\n" +
-                "3.display");
+                "1.To add a contact\n" +
+                "2.To edit a contact\n" +
+                "3.To display the contacts" +
+                "4.To delete");
                 int choose = Convert.ToInt32(Console.ReadLine());
                 if (choose == Exit)
                 {
@@ -49,6 +51,9 @@ namespace AddressBook
                             program.Contactdisplay(person);
                         }
                         Console.WriteLine(".....................................................");
+                        break;
+                    case delete:
+                        program.Deletecontact();
                         break;
                     default:
                         Console.WriteLine("wrong input......enter another input");
@@ -147,6 +152,24 @@ namespace AddressBook
             else
                 Console.WriteLine("bye");
 
+        }
+        public void Deletecontact()
+        {
+            AddressBookMain addressBook = new AddressBookMain();
+            foreach (var item in list)
+            {
+                Console.WriteLine("enter the first name to search for the details");
+                string searchname = Console.ReadLine();
+                if (item.Firstname == searchname)
+                {
+                    list.Remove(addressBook);
+                    break;
+
+                }
+
+
+            }
+            
         }
     }
 }
