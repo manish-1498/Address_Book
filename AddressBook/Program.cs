@@ -30,7 +30,7 @@ namespace AddressBook
                     "0.for exiting from address book\n" +
                 "1.To add a contact\n" +
                 "2.To edit a contact\n" +
-                "3.To display the contacts" +
+                "3.To display the contacts\n" +
                 "4.To delete");
                 int choose = Convert.ToInt32(Console.ReadLine());
                 if (choose == Exit)
@@ -62,6 +62,9 @@ namespace AddressBook
 
             }
         }
+        /// <summary>
+        /// method To add contact details
+        /// </summary>
         public void AddDetails()
         {
             AddressBookMain addressbook = new AddressBookMain();
@@ -83,6 +86,9 @@ namespace AddressBook
                            + "State : " + person.State + "\n" + "City : " + person.City + "\n" + "Zip : " + person.Zip + "\n"
                            + "PhoneNumber : " + person.Phonenumber + "\n" + "Mail Id : " + person.Mail);
         }
+        /// <summary>
+        /// method to edit the contact
+        /// </summary>
         public void EditContact()
         {
             AddressBookMain addressBook = new AddressBookMain();
@@ -153,6 +159,9 @@ namespace AddressBook
                 Console.WriteLine("bye");
 
         }
+        /// <summary>
+        /// method to delete the contact
+        /// </summary>
         public void Deletecontact()
         {
             AddressBookMain addressBook = new AddressBookMain();
@@ -162,9 +171,11 @@ namespace AddressBook
                 string searchname = Console.ReadLine();
                 if (item.Firstname == searchname)
                 {
-                    list.Remove(addressBook);
-                    break;
 
+                list.Remove(item);
+                    Console.WriteLine("Contact deleted");
+                    Console.WriteLine("......................................");
+                    break;
                 }
 
 
